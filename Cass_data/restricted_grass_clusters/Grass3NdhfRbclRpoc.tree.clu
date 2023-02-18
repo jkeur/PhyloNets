@@ -1,0 +1,45 @@
+// These are the clusters for the trees ndhF rbcL rpoC
+amphipogon aristida arundo austrodant avena bromus centropodi chasmanthi danthonia eragrostis gynerium joinvillea karoochloa merxmuel_m merxmuel_r miscanthus molinia o oryza pappophoru pennisetum phragmites pseudosasa stipa stipagrost thysanolae zea
+amphipogon aristida arundo austrodant avena bromus centropodi chasmanthi danthonia eragrostis gynerium joinvillea karoochloa merxmuel_m merxmuel_r miscanthus molinia oryza pappophoru pennisetum phragmites pseudosasa stipa stipagrost thysanolae zea
+amphipogon aristida arundo austrodant avena bromus centropodi chasmanthi danthonia eragrostis gynerium karoochloa merxmuel_m merxmuel_r miscanthus molinia oryza pappophoru pennisetum phragmites pseudosasa stipa stipagrost thysanolae zea
+amphipogon aristida arundo austrodant avena bromus centropodi chasmanthi danthonia eragrostis gynerium karoochloa merxmuel_m merxmuel_r miscanthus molinia pappophoru pennisetum phragmites stipa stipagrost thysanolae zea
+amphipogon aristida arundo austrodant centropodi chasmanthi danthonia eragrostis gynerium karoochloa merxmuel_m merxmuel_r miscanthus molinia pappophoru pennisetum phragmites stipagrost thysanolae zea
+amphipogon arundo austrodant centropodi chasmanthi danthonia eragrostis gynerium karoochloa merxmuel_m merxmuel_r miscanthus molinia pappophoru pennisetum phragmites thysanolae zea
+aristida arundo centropodi chasmanthi eragrostis gynerium merxmuel_r miscanthus molinia pappophoru pennisetum phragmites stipagrost thysanolae zea
+amphipogon arundo austrodant chasmanthi danthonia gynerium karoochloa merxmuel_m miscanthus molinia pennisetum phragmites thysanolae zea
+amphipogon aristida arundo austrodant centropodi danthonia eragrostis karoochloa merxmuel_m merxmuel_r molinia pappophoru phragmites stipagrost
+aristida austrodant centropodi danthonia eragrostis karoochloa merxmuel_m merxmuel_r molinia pappophoru phragmites stipagrost
+amphipogon arundo chasmanthi gynerium miscanthus molinia pennisetum phragmites thysanolae zea
+aristida austrodant centropodi danthonia eragrostis karoochloa merxmuel_m merxmuel_r pappophoru stipagrost
+centropodi chasmanthi eragrostis merxmuel_r miscanthus pappophoru pennisetum thysanolae zea
+chasmanthi gynerium miscanthus pennisetum thysanolae zea
+aristida austrodant danthonia karoochloa merxmuel_m stipagrost
+aristida arundo gynerium molinia phragmites stipagrost
+gynerium miscanthus pennisetum thysanolae zea
+avena bromus oryza pseudosasa stipa
+amphipogon austrodant danthonia karoochloa merxmuel_m
+aristida gynerium molinia phragmites stipagrost
+chasmanthi miscanthus pennisetum thysanolae zea
+centropodi eragrostis merxmuel_r pappophoru
+austrodant danthonia karoochloa merxmuel_m
+gynerium miscanthus pennisetum zea
+amphipogon arundo molinia phragmites
+avena bromus pseudosasa stipa
+aristida molinia phragmites stipagrost
+chasmanthi miscanthus pennisetum zea
+austrodant danthonia karoochloa
+miscanthus pennisetum zea
+avena bromus stipa
+centropodi eragrostis pappophoru
+eragrostis pappophoru
+centropodi merxmuel_r
+austrodant karoochloa
+miscanthus zea
+molinia phragmites
+amphipogon arundo
+aristida stipagrost
+avena bromus
+chasmanthi thysanolae
+centropodi eragrostis
+oryza pseudosasa
+.
