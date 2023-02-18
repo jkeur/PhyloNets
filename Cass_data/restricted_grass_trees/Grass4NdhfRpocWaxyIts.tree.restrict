@@ -1,0 +1,4 @@
+(o,(((centropodi,merxmuel_r),(((austrodant,karoochloa),merxmuel_m),((zea,miscanthus),pennisetum))),(oryza,lygeum)));
+(o,((((austrodant,karoochloa),merxmuel_m),(((zea,miscanthus),pennisetum),(centropodi,merxmuel_r))),(oryza,lygeum)));
+(o,(merxmuel_m,(((austrodant,karoochloa),(((zea,miscanthus),pennisetum),(lygeum,oryza))),(centropodi,merxmuel_r))));
+(o,(((zea,miscanthus),pennisetum),(centropodi,((merxmuel_r,(merxmuel_m,(austrodant,karoochloa))),(lygeum,oryza)))));

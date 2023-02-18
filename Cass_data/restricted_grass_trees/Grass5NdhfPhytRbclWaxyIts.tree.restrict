@@ -1,0 +1,5 @@
+(o,(((zea,miscanthus),pennisetum),(oryza,(chusquea,triticum))));
+(o,(((zea,miscanthus),pennisetum),(chusquea,(triticum,oryza))));
+(o,((((zea,miscanthus),pennisetum),triticum),(chusquea,oryza)));
+(o,(chusquea,(((zea,miscanthus),pennisetum),(triticum,oryza))));
+(o,(((zea,miscanthus),pennisetum),(triticum,(oryza,chusquea))));

@@ -1,0 +1,4 @@
+(o,((((eragrostis,(danthonia,((chasmanthi,(((zea,miscanthus),pennisetum),thysanolae)),(phragmites,molinia)))),aristida),(oryza,(pseudosasa,(bromus,avena)))),joinvillea));
+(o,(joinvillea,(((((zea,miscanthus),pennisetum),((chasmanthi,thysanolae),(eragrostis,(molinia,phragmites)))),(danthonia,aristida)),(pseudosasa,((bromus,avena),oryza)))));
+(o,(((((((zea,miscanthus),pennisetum),(chasmanthi,thysanolae)),((eragrostis,(danthonia,aristida)),(phragmites,molinia))),(bromus,avena)),(pseudosasa,oryza)),joinvillea));
+(o,(((danthonia,(((phragmites,molinia),aristida),((thysanolae,(((zea,miscanthus),pennisetum),chasmanthi)),eragrostis))),((pseudosasa,oryza),(bromus,avena))),joinvillea));
