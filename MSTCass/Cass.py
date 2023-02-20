@@ -562,18 +562,16 @@ def _get_cc_ret_bounds(cs: ClusterSet, IG: IncGraph, ig_is_min=False, report_bou
         num_ints = len(cs_int_min.C)  # #minimal intersections
         if len(cl1) > X_ints_len:
             if r_min < num_ints:
-                print(f'INFO: A) By a minimal neighbour intersection set of {c1} of size {num_ints}, '
-                      f'r >= {num_ints}.')
-                # IG.draw()
+                # print(f'INFO: A) By a minimal neighbour intersection set of {c1} of size {num_ints}, '
+                #       f'r >= {num_ints}.')
                 r_min = num_ints
             if bounds['min_ints'] < r_min:
                 bounds['min_ints'] = r_min
         else:
             # print(f'INFO: B| X_ints_len = {X_ints_len}, num_ints = {num_ints}, r_min = {r_min}')
-            # len(cl1) = int_unique_len
             if r_min < num_ints - 1:
-                print(f'INFO: B) By a minimal neighbour intersection set of {c1} of size {num_ints}, '
-                      f'r >= {num_ints - 1}.')
+                # print(f'INFO: B) By a minimal neighbour intersection set of {c1} of size {num_ints}, '
+                #       f'r >= {num_ints - 1}.')
                 r_min = num_ints - 1
             if bounds['min_ints'] < r_min:
                 bounds['min_ints'] = r_min
@@ -595,14 +593,14 @@ def _get_cc_ret_bounds(cs: ClusterSet, IG: IncGraph, ig_is_min=False, report_bou
     bounds['n_min_rests'] = amt
     if r > r_min:
         r_min = r
-        print(f"INFO: Globally, there are {amt} different minimal differences => r >= {r}")
+        # print(f"INFO: Globally, there are {amt} different minimal differences => r >= {r}")
 
     # Max clique bound
     c = max_clique(IG)
     r = len(c) - 1
     if r > r_min:
         r_min = len(c) - 1
-        print(f"INFO: I've found a max. clique of size {len(c)} => r >= {r_min}")
+        # print(f"INFO: I've found a max. clique of size {len(c)} => r >= {r_min}")
     bounds['clique'] = r
 
     # Calculate an upper bound on the number of reticulations
@@ -615,12 +613,10 @@ def _get_cc_ret_bounds(cs: ClusterSet, IG: IncGraph, ig_is_min=False, report_bou
         L.append(l)
     r = sum(L[2:])
     if r < r_max:
-        print(f"INFO: By Conjecture 7.2, r <= {r}")
+        # print(f"INFO: By Conjecture 7.2, r <= {r}")
         r_max = r
     if r_min > r_max:
-        print(f'ERROR: A) r_min = {r_min} > r_max = {r_max}')
-        # IG.draw()
-        quit()
+        raise RuntimeError(f'r_min = {r_min} > r_max = {r_max}')
     bounds['max'] = r_max
 
     if report_bounds:
@@ -714,7 +710,7 @@ def optcass(cs: ClusterSet, strategy: int = ORIGINAL, timeout=None):
 
     t0 = time.time()  # Record the elapsed time
     q_res = mp.Queue()  # Record the results
-    p = mp.Process(target=_optcass, name='OptCass', args=(q_res, cn, strategy, timeout))
+    p = mp.Process(target=_optcass, name='OptCass', args=(q_res, cn, timeout))
     p.start()
     p.join(timeout)
     p.terminate()
@@ -731,7 +727,7 @@ def optcass(cs: ClusterSet, strategy: int = ORIGINAL, timeout=None):
     return nets, t_tot, k
 
 
-def _optcass(q_cn_results, cn: CNInstance, strategy: int = ORIGINAL, timeout=None) -> None:
+def _optcass(q_cn_results, cn: CNInstance, timeout=None) -> None:
     # Can a tree be formed? If yes, return it!
     if cn.build_tree():
         cn.k = 0

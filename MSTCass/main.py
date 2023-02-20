@@ -53,12 +53,9 @@ def _main():
                         help="A filename. The file should contain trees formatted in the Newick format.")
     parser.add_argument('-timeout', type=int, nargs='?', default=5,
                         help="The maximal runtime in minutes.")
-    parser.add_argument('-sys_out', type=bool, nargs='?', default=False,
-                        help="Give the results in an easily interpretable format for a computer.")
     args = parser.parse_args()
     FILE_NAME = args.file
     TIMEOUT = args.timeout * 60  # Timeout in seconds
-    SYS_OUT = args.sys_out
 
     # Read the input file
     trees = read(FILE_NAME)
@@ -103,15 +100,12 @@ def _main():
     _print_line('Algorithm', 't [s]', 'k', 'r', 'n')
     print('-' * 36)
     for result in results:
-        if SYS_OUT:
-            print(','.join(f'{k}={v}' for k, v in result.items()))
-        else:
-            _print_line(*list(result.values())[1:])
+        _print_line(*list(result.values())[1:])
 
     short_name = Path(filename).stem
     filename_part = short_name.split('.')[0]
     # Show the result
-    # draw_multi(nets, f'A Level-{results[0]["k"]} Network for {filename_part}', full_screen=True, all_labels=False)
+    draw_multi(nets, f'A Level-{results[0]["k"]} Network for {filename_part}', full_screen=True, all_labels=False)
     # file=f'{filename_part}_net')
 
     # Save the network in Newick format
