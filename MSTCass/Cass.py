@@ -14,6 +14,7 @@ from networkx.algorithms.approximation import max_clique
 
 from ClusterSet import ClusterSet
 from IncGraph import IncGraph
+from PhyloHelper import ensure_dir
 from PhyloNet import PhyloNet
 
 # Global program variables
@@ -368,8 +369,8 @@ class CNInstance:
         return CNInstance(self.cs, self.k, self.k1, self.X_removed, self.net, self.comm_ancs, self.parent_id)
 
 
-def draw_multi(nets: list[PhyloNet], title: str = None, hold=True, file=None, full_screen=False, all_labels=False,
-               labels=None):
+def draw_multi(nets: list[PhyloNet], title: str = None, hold=True, file: str = None, full_screen=False,
+               all_labels=False, labels=None, show=True):
     """
     Draw all networks that are given, in a single figure
     :param nets: A list of networks
@@ -417,13 +418,19 @@ def draw_multi(nets: list[PhyloNet], title: str = None, hold=True, file=None, fu
         if not getattr(mgr, "flag_is_max", None):
             mgr.full_screen_toggle()
             mgr.flag_is_max = True
-    if file is not None:
+    if file is not None and len(file) > 0:
         plt.pause(1E-9)
-        plt.savefig(f'output/{file}', bbox_inches='tight')  # Save the figure
-    if hold:
-        plt.show()
+        # file = f'output/{file}'
+        ensure_dir(file)
+        plt.savefig(file, bbox_inches='tight')  # Save the figure
+        print(f"SUCCESS:\tThe figure has been saved in '{file}'.")
+    if show:
+        if hold:
+            plt.show()
+        else:
+            plt.pause(1E-9)
     else:
-        plt.pause(1E-9)
+        plt.close(fig)
 
 
 def get_ret_bounds(cc: ClusterSet, IG=None, ig_is_min=False, report_bounds=False):  # TODO: finish

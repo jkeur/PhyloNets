@@ -1,3 +1,5 @@
+import os.path
+
 import matplotlib.pyplot as plt
 import numpy as np
 from Bio import Phylo
@@ -20,18 +22,56 @@ def _fix_node_names(tree):
             clade.name = clade.name.replace('#', '_')
 
 
-def read(file: str):
+def read(filename: str):
     """
     Read the input file and give each node a name
-    :param file: A file name
+    :param filename: A file name
     :return: The trees
     """
-    trees = list(Phylo.parse(file, "newick"))
-    for t in trees:
-        _fix_node_names(t)
-    print(f"SUCCESS: '{file}' has been read successfully.")
+    if not os.path.isfile(filename):
+        myFile = f'../Cass_data/restricted_grass_trees/{filename}'
+        if os.path.isfile(myFile):
+            filename = myFile
+        else:
+            myFile = f'../Cass_data/restricted_grass_clusters/{filename}'
+            if os.path.isfile(myFile):
+                filename = myFile
+            else:
+                raise RuntimeError(f"The file '{filename}' does not exist.")
 
-    return trees
+    # If this is a Newick file, parse the trees
+    ext = os.path.splitext(filename)[1]  # Get the file extension
+    if ext == '.nwk':
+        trees = list(Phylo.parse(filename, "newick"))
+        for t in trees:
+            _fix_node_names(t)
+        clusters, _, _ = get_clusters(trees)
+        leaves = get_term_names(trees)
+
+        # short_name = Path(filename).stem
+        # draw_trees(trees, 'Input Trees', filename=(short_name + '_trees'))
+    else:
+        # Otherwise, assume that the file contains a list of clusters
+        clusters, leaves = _read_clusters(filename)
+    print(f"SUCCESS: '{filename}' has been read successfully.")
+
+    return clusters, leaves
+
+
+def _read_clusters(filename: str):
+    clusters = []
+    leaves = set()
+    with open(filename) as file:
+        for line in file:
+            if line[0:2] == '//':  # If this is a comment, skip it
+                continue
+            if line[0] == '.':  # If this is the end of the file
+                break
+            cl = line.rstrip().split(' ')
+            clusters.append(cl)
+            leaves.update(cl)
+
+    return clusters, list(leaves)
 
 
 def tree2newick(tree):
@@ -122,6 +162,13 @@ def get_tree_clusters(tree):
     return clusters, sorted(taxa)
 
 
+def ensure_dir(filename):
+    # Create the path if it does not exist
+    path = os.path.dirname(filename)
+    if len(path) and not os.path.exists(path):
+        os.makedirs(path)
+
+
 def draw_trees(trees, title=None, filename=None):
     """
     Draw the trees in one figure
@@ -147,8 +194,6 @@ def draw_trees(trees, title=None, filename=None):
     if title is not None:
         fig.suptitle(title)
     if filename is not None:
-        import os
-        if not os.path.isdir('output/'):
-            os.makedirs('output/')
-        plt.savefig('output/' + filename, bbox_inches='tight')  # Save the figure
+        # filename = 'output/' + filename
+        plt.savefig(filename, bbox_inches='tight')  # Save the figure
     plt.show()

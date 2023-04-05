@@ -1,3 +1,4 @@
+import os
 import string
 from inspect import stack
 from itertools import combinations
@@ -986,7 +987,11 @@ class PhyloNet(nx.DiGraph):
         :param filename: A file name
         """
         nwk = self._get_newick()
-        filename = 'output/' + filename
+        # Create the path if it does not exist
+        path = os.path.dirname(filename)
+        if len(path) and not os.path.exists(path):
+            os.makedirs(path)
+
         with open(filename, 'w') as f:
             f.write(nwk + ';')
         print(f'SUCCESS: The network is saved as {filename}.')
