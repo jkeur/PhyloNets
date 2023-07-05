@@ -1,4 +1,4 @@
-package org.cass;
+package cass;
 
 
 import java.io.BufferedReader;
@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.util.*;
 import java.util.concurrent.TimeoutException;
+import java.util.stream.Collectors;
 
 import static java.lang.Math.max;
 
@@ -15,6 +16,7 @@ import static java.lang.Math.max;
  * Leo van Iersel, 2012
  * Modified by Hans Keur, 2023
  * -> Modified for creating the connected components (CC) in IG(C) and handling each CC separately + added timeout [min]
+ * Compiled with Java 11
  *
  * Example usage: java org.cass.CassAlgorithm C:/documents/trees.txt --printretnum --timeout=5
  */
@@ -209,11 +211,11 @@ public class CassAlgorithm {
         for (var comp : components) {
             Set taxa = new HashSet();
             for (Vector<Integer> cl : comp) {
-                taxa.addAll(cl.stream().map(i -> stringTaxa.get(i - 1)).toList());
+                taxa.addAll(cl.stream().map(i -> stringTaxa.get(i - 1)).collect(Collectors.toList()));
             }
-            System.out.println(comp.size() + " clusters on the " + taxa.size() + " taxa " + taxa.stream().sorted().toList() + ":");
+            System.out.println(comp.size() + " clusters on the " + taxa.size() + " taxa " + taxa.stream().sorted().collect(Collectors.toList()) + ":");
             for (var cl : comp) {
-                System.out.println(cl.stream().map(i -> stringTaxa.get(i - 1)).toList());
+                System.out.println(cl.stream().map(i -> stringTaxa.get(i - 1)).collect(Collectors.toList()));
             }
             System.out.println();
         }
