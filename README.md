@@ -21,7 +21,7 @@ Notes:
 
 ## How to run Cass
 1. Download the source code from the folder Cass_src;
-2. Build the three Java files (using e.g. javac *.java -d outputdir);
+2. Build the three Java files (using e.g. the command "javac *.java -d outputdir"). Note that the files were built using Java 11;
 3. Go to the directory (e.g. outputdir) containing the built class files;
 4. Run the algorithm, using e.g. the command "java CassAlgorithm '../Cass_data/restricted_grass_clusters/ElusivenessFig9.clu' --printretnum --timeout=5".
 
