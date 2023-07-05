@@ -21,9 +21,9 @@ Notes:
 
 ## How to run Cass
 1. Download the source code from the folder Cass_src;
-2. Build the three Java files;
-3. Go to the directory containing the built class files;
-4. Run e.g. "CassAlgorithm 'in_filename' --printretnum --timeout=5".
+2. Build the three Java files (using e.g. javac *.java -d outputdir);
+3. Go to the directory containing the built class files (e.g. outputdir);
+4. Run the algorithm, using e.g. "CassAlgorithm 'in_filename' --printretnum --timeout=5".
 
 Notes:
 - The option --printretnum prints the progress of the reticulation number found so far. The given number always indicates a lower bound. The format is 'k=K,r=R', where K is the minimum level of the output network and R is the minimum reticulation number. If a network is found, the data that are printed lastly, represent the parameters for the output network (e.g. 'k=4,r=4' for ElusivenessFig9.clu).
